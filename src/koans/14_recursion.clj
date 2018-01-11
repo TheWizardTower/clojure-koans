@@ -21,9 +21,14 @@
   (cons (peek coll) (recursive-reverse (pop coll)))))
 
 (defn factorial [n]
-  (if (= 1 n)
-    n
-    (*' n (factorial (dec' n)))))
+  (loop [n n
+         acc 1]
+    (if (= n 1)
+      acc
+      (recur (dec n) (* n acc))
+      )
+    )
+  )
 
 (meditations
   "Recursion ends with a base case"
